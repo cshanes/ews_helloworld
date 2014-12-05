@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
+<log4j:configuration>
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}| %-5p | %40.40t | %-35c{1} | %m%n"/>
+		</layout>
+	</appender>
+	<appender name="rollingFileAppender" class="org.apache.log4j.RollingFileAppender">
+		<param name="file" value="helloworldService-int-tests.log" />
+		<param name="MaxFileSize" value="10MB" />
+		<!-- Keep one backup file -->
+		<param name="MaxBackupIndex" value="4" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="%d{yyyy-MM-dd HH:mm:ss}| %-5p | %40.40t | %-35c{1} | %m%n"/>
+		</layout>
+	</appender>
+	<!-- 
+	<logger name="org.spectrumhealth.ws.jdbc">
+		<level value="trace"/>
+	</logger>
+	 -->
+	<root>
+		<priority value="info"></priority>
+		<appender-ref ref="stdout" />
+		<appender-ref ref="rollingFileAppender" />
+	</root>
+</log4j:configuration>
